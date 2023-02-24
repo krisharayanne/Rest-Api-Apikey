@@ -44,6 +44,22 @@ const genAPIKey = () => {
 // Register User
 exports.registerUser = (req, res) => {
   // req.body must have requestID, answer = answerToStandardMathEquation, username
+  if (!req.body.requestID) {
+    res.status(400).send({
+      message: "Please send requestID!"
+    });
+  }
+  if (!req.body.answer) {
+    res.status(400).send({
+      message: "Please send answer!"
+    });
+  }
+  if (!req.body.username) {
+    res.status(400).send({
+      message: "Please send username!"
+    });
+  }
+
   let requestID = req.body.requestID; // Retrieve requestID from req.body
   let requestObject = authenticationRequests.find((authenticationRequest) => authenticationRequest.requestID == requestID);
   if(requestObject) { // start first if statement
@@ -73,11 +89,22 @@ exports.registerUser = (req, res) => {
       });
     }
   } // end first if statement
+  else {
+    res.status(400).send({
+      message: "Invalid requestID!"
+    });
+  }
 };
 
 // Generate Access Token
 exports.generateAccessToken = (req, res) => {
   // req.body must have apiKey
+  if (!req.body.apiKey) {
+    res.status(400).send({
+      message: "Please send apiKey!"
+    });
+  }
+
   // Verify that API key is valid
   let apiKey = req.body.apiKey; // Retrieve apiKey from req.body
   let userObject = endUsers.find((endUser) => endUser.apiKey == apiKey);
