@@ -68,7 +68,7 @@ exports.registerUser = (req, res) => {
     let z = x + y;
     let a = 1357;
     let answerObtained = Math.pow(x, 3) + Math.pow(y, 3) + Math.pow(z, 3) + a;
-    // console.log("answerObtained: " + answerObtained);
+    console.log("answerObtained: " + answerObtained);
     if(answerObtained == req.body.answer) { // start second if statement
 
       let endUser = {
