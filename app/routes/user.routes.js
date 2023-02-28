@@ -1,16 +1,17 @@
 module.exports = app => {
     const users = require("../controllers/user.controller.js");
+    const ipFilter = require("../controllers/ipFilter.js"); 
   
     var router = require("express").Router();
 
     // Authenticate User 
-    router.get("/authenticateUser", users.authenticateUser);
+    router.get("/authenticateUser", ipFilter.verifyClientIP, users.authenticateUser);
 
     // Verify Answer to Math Equation, then ? Register User
-    router.post("/registerUser", users.registerUser);
+    router.post("/registerUser", ipFilter.verifyClientIP, users.registerUser);
 
     // Verify API Key valid, then ? Generate Access Token
-    router.post("/generateAccessToken", users.generateAccessToken);
+    router.post("/generateAccessToken", ipFilter.verifyClientIP, users.generateAccessToken);
 
     // // Create a new Tutorial
     // router.post("/", tutorials.create);

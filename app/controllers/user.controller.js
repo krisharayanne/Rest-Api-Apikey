@@ -11,7 +11,7 @@ exports.authenticateUser = (req, res) => {
   let requestID = UniqueStringGenerator.UniqueStringId();
 
   // Generate authenticationMessage
-  let authenticationMessage = Math.floor(Math.random() * 1000000);;
+  let authenticationMessage = Math.floor(Math.random() * 1000000);
   console.log("authenticationMessage: " +  authenticationMessage);
 
   // Store requestID and authenticationMessage in server storage file
