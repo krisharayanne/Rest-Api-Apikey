@@ -3,7 +3,7 @@ function verifyClientIP(req, res, next) {
 
     // should be likwid marketplace staging/production ip addresses
     // currently is my device ip address
-   const trustedIps = ['202.186.81.105'];
+   const trustedIps = ['202.186.81.105','13.250.0.107'];
    let requestIP = req.header('x-forwarded-for');
    let clientIP = requestIP.split(',')[0];  
    console.log("IP Filter Middleware!");
