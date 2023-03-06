@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const ipaddr = require('ipaddr.js');
 
 const app = express();
 
@@ -17,7 +18,15 @@ app.use(express.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Authenticate, Register User and Generate Access Token Server." });
+  let remoteAddress = req.ip;
+  if (ipaddr.isValid(req.ip)) {
+    remoteAddress = ipaddr.process(req.ip).toString();
+    console.log("remoteAddress using ipaddr library: " + remoteAddress);
+  }
+  res.json({
+    remoteAddress,
+    message: "Authenticate, Register User and Generate Access Token Server.",
+  });
 });
 
 require("./app/routes/user.routes.js")(app);
