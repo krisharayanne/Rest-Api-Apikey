@@ -5,33 +5,7 @@ function verifyClientIP(req, res, next) {
 
     // should be likwid marketplace staging/production ip addresses
     // currently is my device ip address
-   const trustedIps = ['202.186.81.105','13.250.0.107'];
-
-  //  // start manual IP extraction without ipaddr.js library
-  //  // declare clientIP
-  //  let clientIP;
-
-  //  let requestIP = req.header('x-forwarded-for');
-  //  if(requestIP) {
-  //   clientIP = requestIP.split(',')[0];  
-  //  }
-  //  else {
-  //   let extractedIP = req.headers['x-forwarded-for'] || 
-  //    req.connection.remoteAddress || 
-  //    req.socket.remoteAddress ||
-  //    req.connection.socket.remoteAddress;
-  //    console.log("Extracted IP: " + extractedIP);
-  //    clientIP = extractedIP;
-
-  //    // check if extractedIP is defined or undefined
-  //    if(extractedIP) {
-  //     // if true, check if extracted ip is in ipv4 or ipv6 version 
-  //    // if in ipv6, convert to ipv4,
-  //    // assign ipv4 address to clientIP variable
-  //    }
-       
-  //  }
-  //  // end manual IP extraction without ipaddr.js library
+   const trustedIps = ['202.186.81.105','13.250.0.107','175.142.216.98'];
 
   // start automatic IP extraction with ipaddr.js library
   let remoteAddress = req.ip;
