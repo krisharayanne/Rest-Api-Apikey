@@ -5,7 +5,7 @@ function verifyClientIP(req, res, next) {
 
     // should be likwid marketplace staging/production ip addresses
     // currently is my device ip address
-   const trustedIps = ['202.186.81.105','13.250.0.107','175.142.216.98', '203.106.115.210'];
+   const trustedIps = ['202.186.81.105','13.250.0.107','175.142.216.98', '203.106.115.210', '219.92.0.25'];
 
   // start automatic IP extraction with ipaddr.js library
   let remoteAddress = req.ip;
